@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+span:nth-child(2){ color:#FF0000; }
+span:nth-child(4){ color:#00FF00; }
+.box{ width:500px; height:50px; border:1px solid #000; border-radius:25px; margin:100px auto; position:relative; overflow:hidden;}
+.box div{ width:800px; height:50px; position:absolute; top:0; left:0; background:-webkit-repeating-linear-gradient(-45deg,#FF0000 0px,#FF0000 10px,#00FF00 10px, #00FF00 20px);}
+</style>
+<script>
+	window.onload = function(){
+		var oBtn1 = document.querySelectorAll('input')[0];
+		var oBtn2 = document.querySelectorAll('input')[1];
+		var oS1 = document.querySelectorAll('span')[0];
+		var oS2 = document.querySelectorAll('span')[1];
+		var oDiv = document.querySelector('.box div');
+		var l = 0;
+		setInterval(function(){
+			l-=2;
+			oDiv.style.left = l%300+'px';
+		},30);
+		oBtn1.onchange = oBtn2.onchange = function(){
+			oS1.style.color = oBtn1.value;
+			oS1.innerHTML = oBtn1.value;
+			oS2.style.color = oBtn2.value;
+			oS2.innerHTML = oBtn2.value;
+		};
+	};
+</script>
+</head>
+
+<body>
+	<input type="color" value="#FF0000" />
+    <span>#FF0000</span>
+    <input type="color" value="#00FF00" />
+    <span>#00FF00</span>
+	<div class="box">
+    	<div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{ overflow:hidden;}
+div{width:400px;height:300px; background:#ccc; border-radius:15px; margin:100px auto; text-align:right;-webkit-transform:scale(5,4); opacity:0; display:none;}
+</style>
+<script>
+window.onload=function(){
+	var oBtn = document.getElementById('btn1');
+	var oDiv = document.querySelector('div');
+	var oClose = document.getElementById('close_btn');
+	oBtn.onclick=function(){
+		oDiv.style.display='block';
+		oDiv.style.WebkitTransition = '.3s all ease';
+		setTimeout(function(){
+			oDiv.style.opacity = 1;
+			oDiv.style.WebkitTransform = 'scale(1,1)';
+		},0);
+	};
+	oClose.onclick=function(){
+		oDiv.style.opacity = 0;
+		oDiv.style.WebkitTransform = 'scale(5,4)';
+		function tranEnd(){
+			oDiv.removeEventListener('transitionend',tranEnd,false);
+			oDiv.style.display = 'none';
+		}
+		oDiv.addEventListener('transitionend',tranEnd,false);
+		
+	};
+};
+</script>
+</head>
+
+<body>
+<input type="button" value="登录" id="btn1" />
+<div>
+	<a href="javascript:;" id="close_btn">X</a>
+	
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
